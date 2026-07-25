@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Play,
@@ -107,17 +107,21 @@ function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <button className="hidden items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 md:inline-flex">
+          <Link
+            to="/login"
+            className="hidden items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 md:inline-flex"
+          >
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#C89A47] text-white">
               <ShieldCheck className="h-3.5 w-3.5" />
             </span>
             Kolkata Police
-          </button>
-          <button
+          </Link>
+          <Link
+            to="/login"
             className="inline-flex items-center gap-2 rounded-xl bg-[#C89A47] px-5 py-2.5 text-xs font-bold text-white transition hover:bg-[#b08436] shadow-md shadow-[#C89A47]/20"
           >
             Login <ArrowRight className="h-4 w-4 text-white ml-0.5" />
-          </button>
+          </Link>
         </div>
       </nav>
     </header>
@@ -168,18 +172,22 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3.5">
-            <button
+            <Link
+              to="/dashboard"
               className="group inline-flex items-center gap-2 rounded-2xl bg-[#B88943] px-7 py-4 text-[15px] font-bold text-white transition hover:bg-[#A17331] shadow-lg shadow-[#B88943]/25"
             >
               Explore Platform
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </button>
-            <button className="inline-flex items-center gap-3 rounded-2xl border border-[#C7AE7D] bg-white/5 px-6 py-4 text-[15px] font-bold text-white backdrop-blur-md transition hover:bg-white/10">
+            </Link>
+            <Link
+              to="/dashboard"
+              className="inline-flex items-center gap-3 rounded-2xl border border-[#C7AE7D] bg-white/5 px-6 py-4 text-[15px] font-bold text-white backdrop-blur-md transition hover:bg-white/10"
+            >
               <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#C7AE7D] bg-white/10">
                 <Play className="h-3.5 w-3.5 fill-white text-white ml-0.5" />
               </span>
               Watch Demo
-            </button>
+            </Link>
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-5 border-t border-white/10 pt-6">
