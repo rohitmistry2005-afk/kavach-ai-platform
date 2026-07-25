@@ -36,6 +36,7 @@ import {
   Check,
   X,
   FileCode2,
+  LogOut,
 } from "lucide-react";
 import {
   ResponsiveContainer,
@@ -267,6 +268,16 @@ function DashboardComponent() {
                 <div className="text-xs font-black text-[#101828]">{officerUser.fullName} 🎖️</div>
                 <div className="text-[10px] font-medium text-[#667085]">{officerUser.assignedDivision}</div>
               </div>
+              <button
+                onClick={() => {
+                  localStorage.removeItem("kavach_user");
+                  window.location.href = "/login";
+                }}
+                title="Sign Out Officer"
+                className="ml-1 rounded-lg p-1 text-[#667085] hover:bg-[#F5F1E8] hover:text-[#DC2626] transition"
+              >
+                <LogOut className="h-4 w-4" />
+              </button>
             </div>
           </div>
         </header>
