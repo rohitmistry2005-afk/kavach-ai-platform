@@ -54,6 +54,32 @@ function DashboardComponent() {
   const [activeTab, setActiveTab] = useState("Dashboard");
   const [searchQuery, setSearchQuery] = useState("");
   const [chatInput, setChatInput] = useState("");
+
+  // Dynamic user profile from PostgreSQL session
+  const [officerUser, setOfficerUser] = useState({
+    fullName: "DCP. Arindam Roy",
+    badgeId: "KP-8842",
+    rankDesignation: "Deputy Commissioner of Police",
+    assignedDivision: "Salt Lake Division",
+  });
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("kavach_user");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        setOfficerUser({
+          fullName: parsed.fullName || "DCP. Arindam Roy",
+          badgeId: parsed.badgeId || "KP-8842",
+          rankDesignation: parsed.rankDesignation || "Deputy Commissioner of Police",
+          assignedDivision: parsed.assignedDivision || "Salt Lake Division",
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
   const [chatMessages, setChatMessages] = useState([
     {
       sender: "user",
@@ -235,11 +261,11 @@ function DashboardComponent() {
             {/* Profile Pill */}
             <div className="flex items-center gap-3 rounded-xl border border-[#ECE6DA] bg-white px-3 py-1.5 shadow-sm">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#B88943] text-xs font-black text-white">
-                AR
+                {officerUser.fullName.split(" ").map(n => n[0]).join("").slice(0, 2)}
               </div>
               <div className="leading-tight">
-                <div className="text-xs font-black text-[#101828]">DCP. Arindam Roy 🎖️</div>
-                <div className="text-[10px] font-medium text-[#667085]">Salt Lake Division</div>
+                <div className="text-xs font-black text-[#101828]">{officerUser.fullName} 🎖️</div>
+                <div className="text-[10px] font-medium text-[#667085]">{officerUser.assignedDivision}</div>
               </div>
             </div>
           </div>
@@ -251,7 +277,7 @@ function DashboardComponent() {
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <div>
               <h1 className="text-2xl font-black text-[#101828]">
-                Good Morning, DCP. Arindam Roy 👋
+                Good Morning, {officerUser.fullName} 👋
               </h1>
               <p className="mt-1 text-xs font-semibold text-[#667085]">
                 Stay informed. Stay ahead. Stay safe.

@@ -108,7 +108,7 @@ function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/login"
+            to="/register"
             className="hidden items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white transition hover:bg-white/20 md:inline-flex"
           >
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#C89A47] text-white">
